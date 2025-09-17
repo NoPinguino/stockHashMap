@@ -47,5 +47,18 @@ public class Producto {
 
     /*MÉTODOS*/
 
+    public double valorDelStock() {
+        return getPrecio() * getStock();
+    }
 
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "codigo='" + codigo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", categoria=" + categoria +
+                ", stock=" + stock +
+                '}';
+    }
 }
