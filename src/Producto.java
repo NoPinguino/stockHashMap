@@ -47,6 +47,7 @@ public class Producto {
 
     /*MÉTODOS*/
 
+    //Big O(1)
     public double valorDelStock() {
         return getPrecio() * getStock();
     }

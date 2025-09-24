@@ -11,16 +11,19 @@ public class InventarioTienda {
         this.inventario = new HashMap<String, Producto>();
     }
 
+    //Big O(n)
     public void mostrarProductos() {
         for (Producto objProducto : inventario.values()) {
             System.out.println(objProducto.toString());
         }
     }
 
+    //Big O(1)
     public void agregarProducto(Producto objProducto) {
         inventario.put(objProducto.getCodigo(), objProducto);
     }
 
+    //Big 0(1)
     public void venderProducto(Producto objProducto, int cantVendida) {
         if (objProducto.getStock() > cantVendida) {
             objProducto.setStock(objProducto.getStock() - cantVendida);
@@ -31,6 +34,7 @@ public class InventarioTienda {
         }
     }
 
+    //Big O(1)
     public void agregarStock(Producto objProducto, int cantAgregada) {
         if (inventario.containsKey(objProducto.getCodigo())) {
             objProducto.setStock(objProducto.getStock() + cantAgregada);
@@ -38,6 +42,7 @@ public class InventarioTienda {
         }
     }
 
+    //Big O(n)
     public Double valorTotal() {
         Double valorTotal = 0.0;
         for (Producto objProducto : inventario.values()) {
@@ -46,6 +51,7 @@ public class InventarioTienda {
         return valorTotal;
     }
 
+    //Big O(n)
     public int stockTotal() {
         int stockTotal = 0;
         for (Producto objProducto : inventario.values()) {
@@ -54,6 +60,7 @@ public class InventarioTienda {
         return stockTotal;
     }
 
+    //Bij 0(n)
     public void imprimirProductos() {
         for (Producto objProducto : inventario.values()) {
             System.out.println(objProducto.toString());
