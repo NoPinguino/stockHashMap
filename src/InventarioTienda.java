@@ -62,6 +62,7 @@ public class InventarioTienda {
         return stockTotal;
     }
 
+    //Big O(n)
     public List<Producto> mostrarProductosPorCategoria(Categoria categoria) {
         List<Producto> productosPorCategoria = new ArrayList<>();
         for (Producto objProducto : inventario.values()) {
