@@ -26,6 +26,8 @@ public class InventarioTienda {
             objProducto.setStock(objProducto.getStock() - cantVendida);
             System.out.println("Se ha vendido " + cantVendida + " de " + objProducto.getNombre() + ".");
             System.out.println("Ese stock ha costado " +  objProducto.getStock() * objProducto.getStock() + ".");
+        } else {
+            System.out.println("Cantidad insuficiente.");
         }
     }
 

@@ -26,5 +26,7 @@ public class Main {
         objInventario.agregarStock(prod2,5);
         objInventario.venderProducto(prod3,10);
         System.out.println("Valor total del inventario: " + objInventario.valorTotal());
+
+        objInventario.imprimirProductos();
     }
 }
