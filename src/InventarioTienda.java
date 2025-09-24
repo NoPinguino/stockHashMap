@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class InventarioTienda {
@@ -58,6 +60,16 @@ public class InventarioTienda {
             stockTotal += objProducto.getStock();
         }
         return stockTotal;
+    }
+
+    public List<Producto> mostrarProductosPorCategoria(Categoria categoria) {
+        List<Producto> productosPorCategoria = new ArrayList<>();
+        for (Producto objProducto : inventario.values()) {
+            if (categoria.equals(objProducto.getCategoria())) {
+                productosPorCategoria.add(objProducto);
+            }
+        }
+        return productosPorCategoria;
     }
 
     //Bij 0(n)

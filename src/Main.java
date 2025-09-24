@@ -28,5 +28,7 @@ public class Main {
         System.out.println("Valor total del inventario: " + objInventario.valorTotal());
 
         objInventario.imprimirProductos();
+
+        System.out.println(objInventario.mostrarProductosPorCategoria(Categoria.SMARTPHONE));
     }
 }
