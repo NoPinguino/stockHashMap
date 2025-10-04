@@ -73,23 +73,31 @@ public class InventarioTienda {
     }
 
     //Big O(n)
-    public List<Producto> mostrarProductosPorCategoria(Categoria categoria) {
+    public void mostrarProductosPorCategoria(Categoria categoria) {
         List<Producto> productosPorCategoria = new ArrayList<>();
         for (Producto objProducto : inventario.values()) {
             if (categoria.equals(objProducto.getCategoria())) {
                 productosPorCategoria.add(objProducto);
             }
         }
-        return productosPorCategoria;
+        for (Producto objProducto : productosPorCategoria) {
+            System.out.println("Código: " + objProducto.getCodigo());
+            System.out.println("Nombre: " + objProducto.getNombre());
+            System.out.println("Precio: " + objProducto.getPrecio());
+            System.out.println("Categoria: " + objProducto.getCategoria());
+            System.out.println("Stock: " + objProducto.getStock());
+            System.out.println(" ");
+        }
     }
 
-    //Bij 0(n)
+    //Big 0(n)
     public void imprimirProductos() {
         for (Producto objProducto : inventario.values()) {
             System.out.println(objProducto.toString());
         }
     }
 
+    //Big O(n)
     public void verValorProducto(String producto) {
         boolean existe = false;
         for (Producto objProducto : inventario.values()) {

@@ -86,13 +86,25 @@ public class Main {
                     objInventario.verValorProducto(producto_ver_valor);
                     break;
                 case 5:
-
+                    System.out.println("El valor total del inventario es " + objInventario.valorTotal() + "€.");
                     break;
                 case 6:
-
+                    System.out.println("EL stock total del inventario es " + objInventario.stockTotal() + "ud de productos.");
                     break;
                 case 7:
+                    System.out.println("Categoría que buscar: ");
+                    String str_categoria = sc.nextLine().toUpperCase();
 
+                    Categoria categoria = null;
+                    try {
+                        categoria = Categoria.valueOf(str_categoria);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Categoría no válida.");
+                    }
+
+                    if (categoria != null) {
+                        objInventario.mostrarProductosPorCategoria(categoria);
+                    }
                     break;
                 case 8:
                     objInventario.imprimirProductos();
