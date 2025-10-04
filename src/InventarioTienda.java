@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 
 public class InventarioTienda {
     private String nombreEmpresa;
@@ -11,13 +10,6 @@ public class InventarioTienda {
     public InventarioTienda(String nombreEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
         this.inventario = new HashMap<String, Producto>();
-    }
-
-    //Big O(n)
-    public void mostrarProductos() {
-        for (Producto objProducto : inventario.values()) {
-            System.out.println(objProducto.toString());
-        }
     }
 
     //Big O(1)
@@ -37,10 +29,18 @@ public class InventarioTienda {
     }
 
     //Big O(1)
-    public void agregarStock(Producto objProducto, int cantAgregada) {
-        if (inventario.containsKey(objProducto.getCodigo())) {
-            objProducto.setStock(objProducto.getStock() + cantAgregada);
-            System.out.println("Stock añadido. Nuevo stock " + objProducto.getStock() + ".");
+    public void agregarStock(String producto, int cantAgregada) {
+        boolean existe = false;
+        for (Producto objProducto : inventario.values()) {
+            if (objProducto.getNombre().equals(producto)) {
+                objProducto.setStock(objProducto.getStock() + cantAgregada);
+                System.out.println("Stock añadido. Nuevo stock " + objProducto.getStock() + ".");
+                existe = true;
+            }
+        }
+        if (!existe) {
+            System.out.println("No existe el producto con el nombre " + producto + ".");
+            System.out.println("Para ver el producto existente usa la opción 'Mostrar todos los productos'.");
         }
     }
 

@@ -1,7 +1,6 @@
+import java.util.Scanner;
 public class Main {
     static void main(String[] args) {
-        System.out.println("Pruebas de inventario:");
-
         Producto prod1 = new Producto("001","HP 200",450,Categoria.LAPTOP,10);
         Producto prod2 = new Producto("002","MacBook Air",900,Categoria.LAPTOP,0);
         Producto prod3 = new Producto("003","iPhone 15 Pro",1400,Categoria.SMARTPHONE,5);
@@ -23,12 +22,70 @@ public class Main {
         objInventario.agregarProducto(prod8);
         objInventario.agregarProducto(prod9);
 
-        objInventario.agregarStock(prod2,5);
-        objInventario.venderProducto(prod3,10);
-        System.out.println("Valor total del inventario: " + objInventario.valorTotal());
+        int option;
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("Menú de pruebas: ");
+            System.out.println("1. Añadir producto.");
+            System.out.println("2. Agregar stock.");
+            System.out.println("3. Vender stock.");
+            System.out.println("4. Ver valor (€) de un producto.");
+            System.out.println("5. Ver valor (€) total.");
+            System.out.println("6. Ver stock total.");
+            System.out.println("7. Mostrar productos por categoría.");
+            System.out.println("8. Mostrar todos los productos.");
+            System.out.println("9. SALIR");
+            System.out.println(" ");
 
-        objInventario.imprimirProductos();
+            System.out.println("¿Qué quieres hacer?: ");
+            option = Integer.parseInt(sc.nextLine());
 
-        System.out.println(objInventario.mostrarProductosPorCategoria(Categoria.SMARTPHONE));
+            switch (option) {
+                case 1:
+
+                    break;
+                case 2:
+                    System.out.println("Stock a añadir: ");
+                    int cantidad = Integer.parseInt(sc.nextLine());
+                    System.out.println("Producto del que quiéres añadir stock: ");
+                    String producto = sc.nextLine();
+                    objInventario.agregarStock(producto,cantidad);
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+                case 8:
+                    objInventario.agregarProducto(prod8);
+                    break;
+                case 9:
+                    System.out.println("CERRANDO MENÚ...");
+                    break;
+                default:
+                    System.out.println("Introduce un valor válido:");
+                    break;
+            }
+
+        } while (option != 9);
+        sc.close();
+
+//        objInventario.agregarStock(prod2,5);
+//        objInventario.venderProducto(prod3,10);
+//        System.out.println("Valor total del inventario: " + objInventario.valorTotal());
+//
+//        objInventario.imprimirProductos();
+//
+//        System.out.println(objInventario.mostrarProductosPorCategoria(Categoria.SMARTPHONE));
     }
 }
