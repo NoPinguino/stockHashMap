@@ -18,13 +18,23 @@ public class InventarioTienda {
     }
 
     //Big 0(1)
-    public void venderProducto(Producto objProducto, int cantVendida) {
-        if (objProducto.getStock() > cantVendida) {
-            objProducto.setStock(objProducto.getStock() - cantVendida);
-            System.out.println("Se ha vendido " + cantVendida + " de " + objProducto.getNombre() + ".");
-            System.out.println("Ese stock ha costado " +  objProducto.getStock() * objProducto.getStock() + ".");
-        } else {
-            System.out.println("Cantidad insuficiente.");
+    public void venderProducto(String producto, int cantVendida) {
+        boolean existe = false;
+        for (Producto objProducto :inventario.values()) {
+            if (objProducto.getNombre().equals(producto)) {
+                existe = true;
+                if (objProducto.getStock() >= cantVendida) {
+                    objProducto.setStock(objProducto.getStock() - cantVendida);
+                    System.out.println("Stock vendido con éxito.");
+                    System.out.println("Se ha vendido " + cantVendida + " " + producto + " con valor de " + cantVendida * objProducto.getPrecio() + ".");
+                } else {
+                    System.out.println("Stock insuficiente en el inventario.");
+                }
+            }
+        }
+        if (!existe) {
+            System.out.println("No existe el producto con el nombre " + producto + ".");
+            System.out.println("Para ver el producto existente usa la opción 'Mostrar todos los productos'.");
         }
     }
 
@@ -77,6 +87,21 @@ public class InventarioTienda {
     public void imprimirProductos() {
         for (Producto objProducto : inventario.values()) {
             System.out.println(objProducto.toString());
+        }
+    }
+
+    public void verValorProducto(String producto) {
+        boolean existe = false;
+        for (Producto objProducto : inventario.values()) {
+            if (objProducto.getNombre().equals(producto)) {
+                existe = true;
+                System.out.println("Tienes " + objProducto.getStock() + " " + producto + ".");
+                System.out.println("A un precio de " + objProducto.getPrecio() + " por unidad, tienes " + (objProducto.getStock() * objProducto.getPrecio()) + "€ en valor de " + producto + ".");
+            }
+        }
+        if (!existe) {
+            System.out.println("No existe el producto con el nombre " + producto + ".");
+            System.out.println("Para ver el producto existente usa la opción 'Mostrar todos los productos'.");
         }
     }
 }

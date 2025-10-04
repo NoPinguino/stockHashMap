@@ -42,20 +42,48 @@ public class Main {
 
             switch (option) {
                 case 1:
+                    System.out.println("Código del nuevo producto: ");
+                    String prodCodigo = sc.nextLine();
+                    System.out.println("Nombre del nuevo producto: ");
+                    String prodNombre = sc.nextLine();
+                    System.out.println("Precio del nuevo producto: ");
+                    Double prodPrecio = Double.parseDouble(sc.nextLine());
+                    System.out.println("Categoría del nuevo producto: ");
+                    String str_prodCategoria = sc.nextLine().toUpperCase();
 
+                    Categoria prodCategoria = null;
+                    try {
+                        prodCategoria = Categoria.valueOf(str_prodCategoria);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Categoría no válida.");
+                    }
+
+                    System.out.println("Stock del nuevo producto: ");
+                    Integer prodStock = Integer.parseInt(sc.nextLine());
+
+                    if (prodCategoria != null) {
+                        Producto newProducto = new Producto(prodCodigo,prodNombre,prodPrecio,prodCategoria,prodStock);
+                        objInventario.agregarProducto(newProducto);
+                    }
                     break;
                 case 2:
                     System.out.println("Stock a añadir: ");
                     int cantidad = Integer.parseInt(sc.nextLine());
                     System.out.println("Producto del que quiéres añadir stock: ");
-                    String producto = sc.nextLine();
-                    objInventario.agregarStock(producto,cantidad);
+                    String producto_agregar = sc.nextLine();
+                    objInventario.agregarStock(producto_agregar,cantidad);
                     break;
                 case 3:
-
+                    System.out.println("Stock a vender: ");
+                    int cantVender = Integer.parseInt(sc.nextLine());
+                    System.out.println("Producto del que quieres vender stock: ");
+                    String producto_vender = sc.nextLine();
+                    objInventario.venderProducto(producto_vender,cantVender);
                     break;
                 case 4:
-
+                    System.out.println("Producto del que quieres ver el valor: ");
+                    String producto_ver_valor = sc.nextLine();
+                    objInventario.verValorProducto(producto_ver_valor);
                     break;
                 case 5:
 
@@ -67,7 +95,7 @@ public class Main {
 
                     break;
                 case 8:
-                    objInventario.agregarProducto(prod8);
+                    objInventario.imprimirProductos();
                     break;
                 case 9:
                     System.out.println("CERRANDO MENÚ...");
